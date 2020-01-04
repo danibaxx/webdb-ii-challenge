@@ -1,10 +1,13 @@
 const express = require('express');
+const carsRouter = require('./cars/cars');
 
 const server = express();
 const host = process.env.HOST || 'localhost';
 const port = process.env.PORT || 3000;
 
 server.use(express.json());
+
+server.use("/api/cars", carsRouter);
 
 server.use((err, req, res, next) => {
   console.log(err)
